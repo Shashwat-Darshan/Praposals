@@ -1,0 +1,74 @@
+<script>
+function showPythonCode() {
+    var x = document.getElementById("pythonCode");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+</script>
+
+<p><button onclick="showPythonCode()">Show Python Code</button></p>
+
+<div id="pythonCode" style="display:none;">
+<pre><code>
+import asyncio
+import json
+
+from ariadne import graphql_sync, make_executable_schema, load_schema_from_path, ObjectType, QueryType
+
+type_defs = load_schema_from_path("schema.graphql")
+
+query = QueryType()
+query.set_field("hello", lambda *_: {"message": "Hello!"})
+
+@query.field("asyncHello")
+async def resolve_async_hello(_, info):
+    await asyncio.sleep(1)
+    return {"message": "Hello, from async!"}
+
+@query.field("asyncHello2")
+async def resolve_async_hello2(_, info):
+    await asyncio.sleep(2)
+    return {"message": "Hello from async, with delay!"}
+
+query.set_field("asyncHello2", resolve_async_hello2)
+
+@query.field("asyncHello3")
+async def resolve_async_hello3(_, info):
+    await asyncio.sleep(3)
+    return {"message": "Hello from async, with delay again!"}
+
+query.set_field("asyncHello3", resolve_async_hello3)
+
+@query.field("asyncHello4")
+async def resolve_async_hello4(_, info):
+    await asyncio.sleep(4)
+    return {"message": "Hello from async, with delay again and again!"}
+
+query.set_field("asyncHello4", resolve_async_hello4)
+
+@query.field("asyncHello5")
+async def resolve_async_hello5(_, info):
+    await asyncio.sleep(5)
+    return {"message": "Hello from async, with delay again and again and again!"}
+
+query.set_field("asyncHello5", resolve_async_hello5)
+
+query.set_field("asyncHello6", lambda *_: {"message": "Hello from async, with delay again and again and again and again!"})
+
+query_type = query
+
+resolvers = [query_type]
+
+schema = make_executable_schema(type_defs, resolvers)
+
+while True:
+    data = json.loads(input())
+    success, result = graphql_sync(
+        schema,
+        data,
+        debug=True
+    )
+    print(json.dumps(result, indent=4))

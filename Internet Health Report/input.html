@@ -1,0 +1,892 @@
+<style>/* Add your custom CSS here */
+    body {
+        font-family: Barlow, sans-serif;
+        line-height: 1.6;
+        padding: 20px;
+        margin: 0;
+        font-size:1.35rem;
+    }
+    pre {
+        background: #b5b6b2;
+        border-radius: 4px;
+        margin: 0.5em 0;
+    color: green ;
+    }
+    code {
+        font-family: \'Fira Code\', Consolas, Monaco, monospace;
+    }
+    :not(pre) > code {
+        background: #f0f0f0;
+        padding: 2px 4px;
+        border-radius: 3px;
+        color: #e83e8c;
+    }
+    img { max-width: 100%; }
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 1em 0;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+    th { background-color: #f4f4f4; }
+    blockquote {
+        border-left: 4px solid #ddd;
+        padding-left: 1em;
+        margin-left: 0;
+        color: #666;
+    }
+    
+    h1 {
+        font-size: 2.2em;
+        color: #2c3e50;
+        border-bottom: 2px solid #eee;
+        padding-bottom: 0.5rem;
+        margin: 1.5rem 0;
+    }
+    
+    h2 {
+        font-size: 1.8em;
+        color: #34495e;
+        margin: 1.5rem 0;
+    }
+    
+    h3 {
+        font-size: 1.4em;
+        color: #455a64;
+    }
+    @media print {
+  @page {
+    margin-bottom: 1cm; /* Adjust as needed for the footer */
+  }
+  .page-number {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    border-top: 1px solid #ccc; /* Optional styling */
+    font-size: 0.8em;
+  }
+}
+img {
+  /* lets give a fixed size for the images and center it */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+}
+body {
+  counter-reset: page; /* Reset page counter at the start of the body */
+}
+
+.page-break {
+  page-break-after: always; /* Force page breaks where needed */
+}
+
+.page-number::after {
+  content: "Page " counter(page);
+  counter-increment: page;
+}
+    </style>
+    <h1>Gsoc Proposal Internet Health Report</h1>
+    <br>
+    <br>
+
+    <table style="width: 100%;">
+      <thead>
+        <tr>
+          <th style="text-align: left; font-size: 140%;">Section</th>
+          <th style="text-align: right; font-size: 140%;">Page</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-size: 140%;"><a href="#i-about-me">I. About Me</a></td>
+          <td style="text-align: right; font-size: 140%;"><a href="#i-about-me">2</a></td>
+        </tr>
+        <tr>
+          <td style="font-size: 140%;"><a href="#ii-why-i-decided-to-work-for-ihr">II. Why I Decided to Work for IHR</a></td>
+          <td style="text-align: right; font-size: 140%;"><a href="#ii-why-i-decided-to-work-for-ihr">2</a></td>
+        </tr>
+        <tr>
+          <td style="font-size: 140%;"><a href="#iii-project-title">III. Project Title</a></td>
+          <td style="text-align: right; font-size: 140%;"><a href="#iii-project-title">3</a></td>
+        </tr>
+        <tr>
+          <td style="font-size: 140%;"><a href="#iv-abstract">IV. Abstract</a></td>
+          <td style="text-align: right; font-size: 140%;"><a href="#iv-abstract">3</a></td>
+        </tr>
+        <tr>
+          <td style="font-size: 140%;"><a href="#v-key-objectives-and-motivation">V. Key Objectives and Motivation</a></td>
+          <td style="text-align: right; font-size: 140%;"><a href="#v-key-objectives-and-motivation">4</a></td>
+        </tr>
+        <tr>
+          <td style="font-size: 140%;"><a href="#vi-expected-outcomes">VI. Expected Outcomes</a></td>
+          <td style="text-align: right; font-size: 140%;"><a href="#vi-expected-outcomes">5</a></td>
+        </tr>
+        <tr>
+          <td style="font-size: 140%; padding-left: 20px;"><a href="#database-management-with-bash-scripts">Database Management with Bash Scripts</a></td>
+          <td style="text-align: right; font-size: 140%;"><a href="#database-management-with-bash-scripts">6</a></td>
+        </tr>
+        <tr>
+          <td style="font-size: 140%; padding-left: 20px;"><a href="#docker-integration">Docker Integration</a></td>
+          <td style="text-align: right; font-size: 140%;"><a href="#docker-integration">7</a></td>
+        </tr>
+        <tr>
+          <td style="font-size: 140%; padding-left: 20px;"><a href="#migration-strategy">Migration Strategy</a></td>
+          <td style="text-align: right; font-size: 140%;"><a href="#migration-strategy">8</a></td>
+        </tr>
+        <tr>
+          <td style="font-size: 140%;"><a href="#vii-deliverables-and-timeline">VII. Deliverables and Timeline</a></td>
+          <td style="text-align: right; font-size: 140%;"><a href="#vii-deliverables-and-timeline">11</a></td>
+        </tr>
+        <tr>
+          <td style="font-size: 140%;"><a href="#viii-unit-testing-strategy">VIII. Unit Testing Strategy</a></td>
+          <td style="text-align: right; font-size: 140%;"><a href="#viii-unit-testing-strategy">19</a></td>
+        </tr>
+        <tr>
+          <td style="font-size: 140%;"><a href="#ix-my-progress-and-research">IX. My Progress and Research</a></td>
+          <td style="text-align: right; font-size: 140%;"><a href="#ix-my-progress-and-research">19</a></td>
+        </tr>
+        <tr>
+          <td style="font-size: 140%;"><a href="#x-expectations-from-mentor">X. Expectations from Mentor</a></td>
+          <td style="text-align: right; font-size: 140%;"><a href="#x-expectations-from-mentor">20</a></td>
+        </tr>
+        <tr>
+          <td style="font-size: 140%;"><a href="#xi-other-commitments">XI. Other Commitments</a></td>
+          <td style="text-align: right; font-size: 140%;"><a href="#xi-other-commitments">20</a></td>
+        </tr>
+        <tr>
+          <td style="font-size: 140%;"><a href="#xii-future-plans-after-gsoc">XII. Future Plans after GSOC</a></td>
+          <td style="text-align: right; font-size: 140%;"><a href="#xii-future-plans-after-gsoc">20</a></td>
+        </tr>
+      </tbody>
+    </table>
+    
+    
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h2 id="i-about-me" style="margin-top: 30px;"><strong>I. About Me</strong></h2>
+    <ul style="list-style-type: none; padding: 0;">
+        <li><strong>Name:</strong> Shashwat Darshan</li>
+        <li><strong>Email:</strong> <a href="mailto:shashwatdarshan153@gmail.com">shashwatdarshan153@gmail.com</a></li>
+        <li><strong>GitHub:</strong> <a href="https://github.com/Shashwat-Darshan">Shashwat-Darshan</a></li>
+        <li><strong>Location:</strong> New Delhi, India</li>
+        <li><strong>Timezone:</strong> GMT+5:30</li>
+        <li><strong>Resume:</strong> <a href="https://drive.google.com/file/d/1yvINpTtjALoGplp3KVKpDkokAqdEzDLo/view?usp=sharing">Link</a></li>
+    </ul>
+    <p>I am an enthusiastic software developer with a deep passion for backend technologies, system architecture, and high-performance computing. I have extensive hands-on experience with Python, Django, FastAPI, SQL, and containerization tools such as Docker. My technical foundation is built upon rigorous project-based learning and real-world applications, where I have successfully developed and optimized backend systems. Although my previous projects have been on a smaller scale, I am eager to undertake this significant migration project and work alongside experienced mentors at IHR to develop an efficient, high-performing, and maintainable backend architecture. I see this as an opportunity to further refine my technical capabilities, expand my problem-solving skills, and contribute meaningfully to an open-source initiative that impacts a global audience.</p>
+    <h2 id="ii-why-i-decided-to-work-for-ihr" ><strong>II. Why I Decided to Work for IHR</strong></h2>
+    <p>I am thrilled at the prospect of contributing to the Internet Health Report (IHR) project because it presents a combination of complex technical challenges and a mission-driven approach that strongly aligns with my skills and values. The chance to migrate the IHR API from an outdated Django framework to the modern FastAPI, streamline database management using Bash scripts, and deploy the application efficiently through Docker aligns perfectly with my technical expertise in Django, FastAPI, SQL, and containerization technologies.</p>
+    <p>Beyond the technical aspects, I am deeply passionate about the project's overarching goal of enhancing internet resiliency and accessibility-two critical components in today's connected world. By participating in this initiative, I will have the opportunity to collaborate with a diverse and global developer community, gain invaluable hands-on experience in large-scale system migration, and contribute to an essential tool that informs and empowers millions. The combination of technical challenge, real-world impact, and professional growth makes this a compelling and deeply rewarding endeavor for me.</p>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <h2 id = "iii-project-title" style="margin-top: 30px;"><strong>III. Project Title</strong></h2>
+    <p><strong>Migrating IHR Backend from Django 2.2 to FastAPI for Improved Performance, Scalability, and Maintainability</strong></p>
+    <h2 id="iv-abstract" ><strong>IV. Abstract</strong></h2>
+    <p>The current IHR backend is built on Django 2.2.27, an outdated version of the Django web framework that lacks support for modern asynchronous programming. This results in performance bottlenecks under high-concurrency conditions, limits the system's ability to efficiently scale, and increases the complexity of maintaining and extending the codebase. As the number of users and data interactions continues to grow, the system's synchronous nature poses challenges in handling concurrent requests effectively, often causing slowdowns and reduced responsiveness during peak traffic periods.</p> 
+    <p>This proposal outlines a migration plan to FastAPI, a high-performance, asynchronous Python web framework specifically designed for building APIs with modern development practices. FastAPI's built-in support for asynchronous I/O, automatic OpenAPI documentation generation, and dependency injection will not only improve the backend's responsiveness but also simplify the overall architecture and enhance maintainability. Furthermore, replacing Django's ORM with optimized raw SQL scripts executed via Bash, as per the project's requirements, will enable more efficient and transparent database interactions. These changes are expected to significantly boost system performance, enhance developer productivity, and lay the foundation for a more scalable, secure, and future-ready backend infrastructure for the IHR project.</p>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h2 id = "v-key-objectives-and-motivation"><strong>V. Key Objectives and Motivation</strong></h2>
+    <h3><strong>Key Objectives</strong></h3>
+    <ul>
+    <li><strong>API Migration:</strong> Migrate all Django API endpoints to FastAPI using asynchronous processing to reduce latency, increase throughput, and improve scalability.</li>
+    <li><strong>Database Management:</strong> Implement Bash scripts for database initialization, schema migrations, and management using raw SQL for greater flexibility and performance, following the project requirements.</li>
+    <li><strong>Containerization &amp; Documentation:</strong> Dockerize the FastAPI application for seamless deployment across different environments and auto-generate comprehensive API documentation using FastAPI's built-in OpenAPI support.</li>
+    <li><strong>Security:</strong> Maintain existing Django token authentication via JWT in FastAPI.</li>
+    </ul>
+    <h3><strong>Motivation for Migration</strong></h3>
+    <ul>
+    <li><strong>Performance Bottlenecks:</strong> The synchronous nature of Django's views and operations causes slow response times under heavy loads. Asynchronous processing in FastAPI will allow the system to handle a larger number of concurrent requests more efficiently.</li>
+    <li><strong>Maintainability Issues:</strong> The current monolithic codebase is complex and difficult to maintain. Adopting a modular design with type-safe models will simplify the code and improve long-term maintainability. The use of Bash scripts for DB management aligns with project goals but will require careful implementation for robust state tracking and error handling.</li>
+    <li><strong>Scalability Constraints:</strong> As data volume grows and user demand increases, the existing Django-based architecture struggles to scale. FastAPI's support for asynchronous requests, combined with potentially optimized database interactions, will enhance the system's scalability.</li>
+    <li><strong>Security:</strong> The modernization process will maintain a secure authentication mechanism using JWT, ensuring continuity and familiarity.
+      <br>
+      <br>
+      <img src="https://raw.githubusercontent.com/Shashwat-Darshan/ihr-django/master/images/migration_challenges_and_soln.png" alt="Migration Challenges and Solutions" style="max-height: 400px;"/></li>
+    </ul>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    <h2 id="vi-expected-outcomes" ><strong>VI. Expected Outcomes</strong></h2>
+    <ul>
+    <li><strong>Substantial improvements in API performance</strong> through asynchronous request handling and optimized query execution.</li>
+    <li><strong>A more modular, maintainable, and scalable backend architecture</strong> that is easier to extend and optimize in the future.</li>
+    <li><strong>Enhanced developer experience</strong> through automatic API documentation, type safety, and better error handling.</li>
+    <li><strong>Improved system resilience and fault tolerance</strong>, ensuring the IHR API can handle increasing workloads efficiently.</li>
+    <li><strong>Performance Targets:</strong></li>
+    </ul>
+    <ul>
+    <li>95% of API endpoints respond under <strong>200ms</strong> at 1000 RPM</li>
+    <li>Database initialization completes in &lt; 30 seconds</li>
+    </ul>
+    <h3>Future Work (Subject to Mentor Approval)</h3>
+    <ul>
+    <li>[ ] CI/CD pipeline using GitHub Actions</li>
+    <li>[ ] Enhanced monitoring with Prometheus/Grafana</li>
+    <li>[ ] Integrate Celery for handling background tasks asynchronously</li>
+    <li>[ ] WebSocket support for real-time features</li>
+    <li>[ ] Kubernetes deployment configuration</li>
+    </ul>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <ul></ul>
+    <h2 id = "database-management-with-bash-scripts" style="margin-top: 30px;padding-top: 30px;"><strong>Database Management with Bash Scripts</strong></h2>
+    <h2>1. Directory Structure</h2>
+    <p><img src="https://raw.githubusercontent.com/Shashwat-Darshan/ihr-django/master/images/repo_dir.png" alt="apiflow" /></p>
+    <p><em>Note: Careful implementation will be required to ensure these scripts are robust, handle errors gracefully, and manage migration state effectively.</em></p>
+    <h2 id = "docker-integration"><strong>2. Docker Integration</strong></h2>
+    <p><strong>Dockerfile:</strong></p>
+    <pre><code class="language-dockerfile">FROM python:3.11-slim-buster
+    
+    WORKDIR /app
+    
+    COPY requirements.txt .
+    RUN pip install --no-cache-dir -r requirements.txt
+    
+    COPY ./app /app/app
+    COPY ./db_scripts /app/db_scripts
+    COPY ./sql /app/sql
+    
+    CMD [\"uvicorn\", \"app.main:app\", \"--host\", \"0.0.0.0\", \"--port\", \"8000\"]</code></pre>
+    <h3><strong>Explanation</strong></h3>
+    <p>
+      The <code>docker-compose.yml</code> file sets up a multi-container development environment with two essential services:
+    </p>
+    <ul>
+      <li>
+        <strong>app</strong>: This service builds your FastAPI application using the Dockerfile in the current directory. It exposes port <code>8000</code> to the host machine and uses environment variables for database connectivity. It is configured to start only after the database service is ready using <code>depends_on</code>.
+      </li>
+      <li>
+        <strong>postgres</strong>: A PostgreSQL 14 database container based on a lightweight Alpine image. It initializes using values passed through environment variables and stores persistent data using the <code>pgdata</code> volume.
+      </li>
+    </ul>
+    <p>
+      This configuration ensures consistent and isolated environments for your backend application and database, making local development and testing more reliable and streamlined.
+    </p>
+    <br>
+    <!-- ADD UNDERLINE -->
+    <hr>
+    <br>
+    <p><strong>docker-compose.yml:</strong></p>
+    <pre><code class="language-yaml">version: \'3.8\'
+    services:
+     app:
+     build: .
+     ports: [\"8000:8000\"]
+     environment:
+     - POSTGRES_USER=${POSTGRES_USER}
+     - POSTGRES_DB=${POSTGRES_DB}
+     # Add other necessary environment variables (e.g., JWT secret, POSTGRES_PASSWORD)
+     depends_on:
+     - postgres
+     postgres:
+     image: postgres:14-alpine
+     environment:
+     POSTGRES_USER: ${POSTGRES_USER}
+     POSTGRES_DB: ${POSTGRES_DB}
+     POSTGRES_PASSWORD: ${POSTGRES_PASSWORD} # Ensure password is set
+     volumes:
+     - pgdata:/var/lib/postgresql/data
+    
+    volumes:
+     pgdata:</code></pre>
+     <h3> <strong>Explanation for <code>docker-compose.yml</code></strong></h3>
+
+     <p>
+       This <code>docker-compose.yml</code> file defines a multi-container setup using <strong>Docker Compose</strong>, orchestrating two core services:
+     </p>
+     
+     <ul>
+       <li>
+         <strong>app</strong>: Builds and runs the FastAPI application from the Dockerfile. It exposes port <code>8000</code>, sets environment variables, and waits for the PostgreSQL service to be ready.
+       </li>
+       <li>
+         <strong>postgres</strong>: Launches a lightweight PostgreSQL 14 database using the official <code>alpine</code> image, with environment variables passed securely (via <code>.env</code>). A named volume <code>pgdata</code> ensures persistent storage across container restarts.
+       </li>
+     </ul>
+     
+     <p>
+       This setup allows seamless local development with isolated, reproducible environments and avoids dependency conflicts across systems.
+     </p>
+     
+
+    <br>
+    <br>
+    <br>
+
+    <h2 id = "migration-strategy" style="margin-top: 30px;padding-top: 30px;"><strong>Migration Strategy</strong></h2>
+    <p>A complete switch to FastAPI is the preferred migration strategy. The migration will be executed in a phased manner, focusing on migrating the backend component by component to ensure stability and maintainability.</p>
+    <p>The migration will proceed component by component, starting with the database layer integration using Bash scripts, followed by the API endpoints, and then the authentication mechanisms.</p>
+    <h4><strong>Database Layer (Bash-based approach)</strong></h4>
+    <p><img src="https://raw.githubusercontent.com/Shashwat-Darshan/ihr-django/master/images/visual_selection.png" alt="image" /></p>
+    <h3><strong>1. Component-wise Migration</strong></h3>
+    <p>The database management will be handled primarily through Bash scripts for schema initialization, migrations, seeding, and general management, interacting with the PostgreSQL database using raw SQL, as specified in the project idea. <strong>Emphasis will be placed on making these scripts robust, including error handling, logging, and clear state management (e.g., tracking applied migrations).</strong> The FastAPI application will use <code>asyncpg</code> to interact with the database asynchronously, potentially executing SQL directly or invoking helper functions that utilize the defined SQL files/logic.</p>
+    <h4><strong>API Endpoints</strong></h4>
+    <p>Existing Django API endpoints will be migrated to FastAPI, leveraging asynchronous programming capabilities via <code>async</code>/<code>await</code> and <code>asyncpg</code>. The goal is to maintain 100% API compatibility during this transition.</p>
+    <pre><code class="language-python"># Example using asyncpg directly (preferred for async)
+    import asyncpg
+    from fastapi import APIRouter, Depends, HTTPException
+    from typing import List
+    # Assuming a dependency function get_db_pool() provides an asyncpg pool
+    # from app.core.database import get_db_pool
+    
+    router = APIRouter()
+    
+    @router.get(\"/hegemony/\", response_model=List[dict])
+    async def get_hegemony(timebin: str = None, pool: asyncpg.Pool = Depends(get_db_pool)):
+     # Migrate existing Django view logic to async
+     # Utilize asyncpg for database interactions
+     try:
+     # Example query (replace with actual logic based on SQL files)
+     query = \"SELECT * FROM hegemony_data WHERE timebin = $1;\" # Parameterized query
+     results = await pool.fetch(query, timebin)
+     # Convert asyncpg Records to dictionaries if needed for the response model
+     return [dict(record) for record in results]
+     except asyncpg.PostgresError as e:
+     # Proper logging should be added here
+     raise HTTPException(status_code=500, detail=f\"Database error: {e}\")
+     except Exception as e:
+     # Proper logging should be added here
+     raise HTTPException(status_code=500, detail=f\"An unexpected error occurred: {e}\")</code></pre>
+    <h3><strong>2. Migration Phases</strong></h3>
+    <p><em>(This subsection outlines the phases described in detail in Section VII below)</em></p>
+    <ol>
+    <li><strong>Phase 1: Initial Setup and Core Database Scripting (2 weeks)</strong></li>
+    <li><strong>Phase 2: Database Scripting &amp; Schema Conversion (3 weeks)</strong></li>
+    <li><strong>Phase 3: API Endpoint Migration (4 weeks)</strong></li>
+    <li><strong>Phase 4: Authentication and Security Implementation (2 weeks)</strong></li>
+    <li><strong>Phase 5: Optimization, Testing, and Deployment Prep (2 weeks)</strong></li>
+    </ol>
+    <h3><strong>3. Key Components to Migrate</strong></h3>
+    <ol>
+    <li><strong>Database Management:</strong></li>
+    </ol>
+    <ul>
+    <li>Schema initialization (<code>init_db.sh</code>)</li>
+    <li>Migrations (<code>migrate_db.sh</code> with state tracking)</li>
+    <li>Backup and restoration (<code>backup_db.sh</code>, <code>restore_db.sh</code>)</li>
+    <li>Database seeding (<code>seed_db.sh</code>)</li>
+    </ul>
+    <ol start="2">
+    <li><strong>API Endpoints:</strong> <em>(Examples)</em></li>
+    </ol>
+    <ul>
+    <li><code>/hegemony/</code></li>
+    <li><code>/hegemony/countries/</code></li>
+    <li><code>/hegemony/asns/</code></li>
+    <li>User management endpoints (if applicable)</li>
+    </ul>
+    <ol start="3">
+    <li><strong>Authentication:</strong></li>
+    </ol>
+    <ul>
+    <li>Token-based auth → JWT (generation, validation middleware)</li>
+    <li>Password hashing (<code>passlib</code>)</li>
+    <li>Permissions logic</li>
+    </ul>
+    <h3><strong>4. Technical Considerations</strong></h3>
+    <pre><code class="language-python"># Requirements
+    fastapi&gt;=0.100.0
+    uvicorn[standard]&gt;=0.20.0
+    pydantic&gt;=2.0.0
+    python-jose[cryptography]&gt;=3.3.0
+    passlib[bcrypt]&gt;=1.7.4
+    redis&gt;=4.5.0 # For caching implementation in Phase 5
+    asyncpg&gt;=0.29.0 # For asynchronous PostgreSQL interactions
+    # psycopg2-binary # May be needed by other tools or for sync fallback/testing</code></pre>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    
+    <h2 id = "vii-deliverables-and-timeline" ><strong>VII. Deliverables and Timeline</strong></h2>
+    <h2><strong>Project Deliverables</strong></h2>
+    <h3>Code Migration</h3>
+    <p><img src="https://raw.githubusercontent.com/Shashwat-Darshan/ihr-django/master/images/fast-api-flow.png" alt="apiflow" /></p>
+    <ul>
+    <li>Migrate all Django views and API endpoints to FastAPI with async support (<code>async</code>/<code>await</code>, <code>asyncpg</code>).</li>
+    <li>Implement structured request handling and response validation using Pydantic models.</li>
+    <li>Manage database schema changes and versioning with robust Bash scripts executing raw SQL (including state tracking and error handling).</li>
+    </ul>
+    <h3><strong>Security:</strong></h3>
+    <ul>
+    <li>Implement secure JWT-based authentication to maintain parity with the existing Django system.</li>
+    <li>Strengthen input validation and enforce security best practices (e.g., security headers).</li>
+    <li>Implement basic rate limiting (if time permits within Phase 4).</li>
+    </ul>
+    <h3><strong>Performance Optimizations:</strong></h3>
+    <ul>
+    <li>Introduce caching mechanisms using <strong>Redis</strong> to optimize frequently accessed database queries/API responses.</li>
+    <li>Conduct load testing to identify potential bottlenecks and benchmark against targets.</li>
+    <li>Leverage <code>asyncpg</code> connection pooling and asynchronous query execution.</li>
+    </ul>
+    <h3><strong>Deployment and Containerization:</strong></h3>
+    <ul>
+    <li>Containerize the FastAPI application using Docker and Docker Compose for efficient development and deployment workflows.</li>
+    </ul>
+    <h3><strong>Documentation and Testing:</strong></h3>
+    <ul>
+    <li>Maintain comprehensive project documentation: README, migration guides, API documentation (auto-generated via OpenAPI), Bash script usage (<code>DATABASE.md</code>), and system architecture details.</li>
+    <li>Implement extensive test coverage using <code>pytest</code> and <code>pytest-asyncio</code> for robustness.</li>
+    <li>Conduct security checks and performance audits to validate the migration's success against objectives.</li>
+    </ul>
+
+    <h2><strong>Timeline and Implementation Plan</strong></h2>
+    <h3><strong>Community Bonding (May 8 - June 1, 2025)</strong></h3>
+    <ul>
+      <li>
+        <strong>Goals:</strong>
+        <ul>
+          <li>Understand the existing Django 2.2 codebase in detail</li>
+          <li>Engage with mentors and discuss migration strategies</li>
+          <li>Document current API behavior, dependencies, and challenges</li>
+          <li>Define key milestones and deliverables</li>
+        </ul>
+        <div style="margin-top: 10px;">
+          <img src="https://raw.githubusercontent.com/Shashwat-Darshan/ihr-django/master/images/phase-0.png" alt="phase 0" />
+        </div>
+      </li>
+    
+      <li style="margin-top: 20px;">
+        <strong>Tasks Overview:</strong>
+        <ul>
+          <li>Study and analyze existing models (<code>models.py</code>) such as <code>Hegemony</code>, <code>ASN</code>, <code>Country</code>, and understand database caching strategies</li>
+          <li>Review API endpoints in <code>views.py</code> related to network monitoring and hegemony analysis</li>
+          <li>Document authentication methods, database relationships, and performance bottlenecks</li>
+          <li>Prepare a high-level migration roadmap with mentors</li>
+          <li>Set up a development environment (Python, Docker, PostgreSQL, and basic FastAPI setup)</li>
+          <li>Contribute to simple issues in the IHR codebase (if applicable) to understand the workflow</li>
+          <li>Schedule introductory calls with mentors to align on expectations</li>
+        </ul>
+      </li>
+    </ul>
+    
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+          line-height: 1.6;
+          margin: 20px;
+      }
+      h3 {
+          color: #2c3e50;
+          margin-top: 30px;
+          border-bottom: 1px solid #ddd;
+          padding-bottom: 5px;
+      }
+      .main-list {
+          margin-left: 0;
+          padding-left: 0;
+      }
+      .main-list > li {
+          list-style-type: none;
+          margin-bottom: 15px;
+      }
+      .sub-list {
+          margin-left: 25px;
+      }
+      .sub-list > li {
+          margin-bottom: 8px;
+      }
+      .phase-img {
+          display: block;
+          max-width: 90%;
+          margin: 15px 0;
+      }
+  </style>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+    <h3><strong>Phase 1: Core Setup (June 2 - June 15, 2025)</strong></h3>
+    <ul class="main-list">
+        <li><strong>Goals:</strong> Set up the FastAPI project structure, establish core middleware (logging, error handling), request handling, database connections (<code>asyncpg</code>), and implement initial basic DB scripts.
+            <img class="phase-img" src="https://raw.githubusercontent.com/Shashwat-Darshan/ihr-django/master/images/phase-1.png" alt="phase 1" />
+        </li>
+        <li><strong>Tasks:</strong>
+            <ul class="sub-list">
+                <li>Create FastAPI project skeleton following best practices (e.g., <code>/app</code>, <code>/core</code>, <code>/api</code>, <code>/schemas</code>, <code>/db_scripts</code>, <code>/sql</code>).</li>
+                <li>Implement environment configuration management (e.g., using Pydantic settings).</li>
+                <li>Set up Docker containers (FastAPI app, PostgreSQL) via <code>docker-compose.yml</code>.</li>
+                <li>Implement <code>asyncpg</code> connection pool setup and dependency injection for routes.</li>
+                <li>Develop initial <code>db_scripts/init_db.sh</code> to create the database and roles.</li>
+                <li>Implement basic middleware (e.g., logging requests).</li>
+                <li>Create a basic health check endpoint.</li>
+            </ul>
+        </li>
+        <li><strong>Key Challenges:</strong> Ensuring seamless configuration transition, handling initial async requests correctly, setting up robust DB connection management.</li>
+    </ul>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <h3><strong>Phase 2: Database Scripting &amp; Schema Conversion (June 16 - July 5, 2025)</strong></h3>
+    <ul class="main-list">
+        <li><strong>Goals:</strong> Convert Django models to SQL schema files, develop and test robust Bash scripts for DB management (init, migrate, backup, seed) with error handling and state tracking, implement dry-run for migrations.
+            <img class="phase-img" src="https://raw.githubusercontent.com/Shashwat-Darshan/ihr-django/master/images/phase-2.png" alt="phase 2" />
+        </li>
+        <li><strong>Tasks:</strong>
+            <ul class="sub-list">
+                <li>Translate Django models into <code>sql/schema/*.sql</code> files (tables, indexes, constraints).</li>
+                <li>Develop <code>db_scripts/migrate_db.sh</code>:
+                    <ul class="sub-list">
+                        <li>Implement logic to detect and apply new migrations from <code>sql/migrations/</code>.</li>
+                        <li>Include robust error handling (<code>set -e</code>, explicit checks).</li>
+                        <li>Implement state tracking (e.g., <code>schema_migrations</code> table).</li>
+                        <li>Implement <code>--dry-run</code> functionality as shown previously.</li>
+                        <li>Consider basic rollback mechanisms or instructions for manual rollback.</li>
+                    </ul>
+                </li>
+                <li>Develop <code>db_scripts/backup_db.sh</code> (using <code>pg_dump</code>) and potentially <code>restore_db.sh</code> (<code>psql</code>).</li>
+                <li>Develop <code>db_scripts/seed_db.sh</code> for populating initial/test data.</li>
+                <li>Define Pydantic models in <code>/schemas</code> mirroring the SQL structure for validation.</li>
+                <li>Thoroughly test all Bash scripts.</li>
+            </ul>
+        </li>
+        <li><strong>Challenges:</strong> Ensuring Bash script robustness, correct state management for migrations, handling potential large datasets during seeding/migrations efficiently, translating complex Django model relationships/logic to SQL/Bash.</li>
+    </ul>
+        <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <h3><strong>Phase 3: API Endpoint Migration (July 6 - July 25, 2025)</strong></h3>
+    <ul class="main-list">
+        <li><strong>Goals:</strong> Convert key Django API views into FastAPI endpoints, implement asynchronous request handling using <code>asyncpg</code>, ensure feature parity and API compatibility.
+            <img class="phase-img" src="https://raw.githubusercontent.com/Shashwat-Darshan/ihr-django/master/images/phase-3.png" alt="phase 3" />
+        </li>
+        <li><strong>Tasks:</strong>
+            <ul class="sub-list">
+                <li>Migrate Django API views (e.g., from <code>views.py</code>) to FastAPI routers/endpoints (<code>/api/v1/</code>).</li>
+                <li>Replace Django ORM calls with asynchronous <code>asyncpg</code> queries.</li>
+                <li>Implement request validation using Pydantic models defined in Phase 2.</li>
+                <li>Implement response serialization using <code>response_model</code> with Pydantic.</li>
+                <li>Ensure error responses are handled gracefully and consistently.</li>
+                <li>Validate migrated API behavior against the existing Django system (functional parity).</li>
+            </ul>
+        </li>
+        <li><strong>Challenges:</strong> Maintaining 100% API consistency, handling potential subtle differences in behavior between sync Django ORM and async raw SQL (<code>asyncpg</code>), debugging async code effectively.</li>
+    </ul>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h3><strong>Phase 4: Authentication &amp; Security (July 26 To August 5, 2025)</strong></h3>
+    <ul class="main-list">
+        <li><strong>Goals:</strong> Implement JWT authentication matching existing functionality, migrate permissions logic, enforce security best practices.
+            <img class="phase-img" src="https://raw.githubusercontent.com/Shashwat-Darshan/ihr-django/master/images/phase-4.png" alt="phase 4" />
+        </li>
+        <li><strong>Tasks:</strong>
+            <ul class="sub-list">
+                <li>Implement JWT token generation (on login) and validation (middleware/dependency) using <code>python-jose</code>.</li>
+                <li>Implement password hashing/verification using <code>passlib</code>.</li>
+                <li>Create authentication routes (<code>/login</code>, potentially <code>/register</code> if needed).</li>
+                <li>Implement dependency functions to get current user from JWT and enforce permissions.</li>
+                <li>Migrate existing user roles/permissions logic (this might involve DB checks via <code>asyncpg</code>).</li>
+                <li>Implement security enhancements: input validation (via Pydantic), security headers (via middleware), basic rate limiting (e.g., using <code>slowapi</code> if time permits).</li>
+            </ul>
+        </li>
+        <li><strong>Challenges:</strong> Ensuring seamless security transition without breaking existing client workflows, mapping Django's auth system concepts to FastAPI/JWT, securely handling secrets.</li>
+    </ul>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h3><strong>Phase 5: Optimization &amp; Deployment Prep (August 6 To August 15, 2025)</strong></h3>
+    <ul class="main-list">
+        <li><strong>Goals:</strong> Implement Redis caching for key endpoints, conduct performance benchmarking, finalize Docker setup, finalize API documentation.
+            <img class="phase-img" src="https://raw.githubusercontent.com/Shashwat-Darshan/ihr-django/master/images/phase-5.png" alt="phase 5" />
+        </li>
+        <li><strong>Tasks:</strong>
+            <ul class="sub-list">
+                <li>Integrate Redis connection using a library like <code>redis-py</code> (async support).</li>
+                <li>Identify high-traffic/slow endpoints suitable for caching.</li>
+                <li>Implement caching logic (e.g., decorator or middleware) for selected endpoints, including cache invalidation strategies where necessary.</li>
+                <li>Conduct performance benchmarking and load testing (e.g., using <code>locust</code>) against targets (&lt;200ms).</li>
+                <li>Analyze results and perform basic query optimization if needed.</li>
+                <li>Finalize <code>Dockerfile</code> and <code>docker-compose.yml</code> for production-like setup (consider multi-stage builds, non-root user).</li>
+                <li>Ensure auto-generated OpenAPI documentation is accurate and user-friendly.</li>
+                <li>Write/finalize user documentation (README, <code>DATABASE.md</code> on script usage).</li>
+            </ul>
+        </li>
+        <li><strong>Challenges:</strong> Implementing effective caching strategies with proper invalidation, setting up realistic load tests, ensuring Docker setup is efficient and secure.</li>
+    </ul>
+    <br><br>
+
+    <br>
+    <br><br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br><br>
+    <br>
+    <br>
+    <br>
+    <h3><strong>Final Evaluation (August 16 To August 25, 2025)</strong></h3>
+    <ul class="main-list">
+        <li><strong>Goals:</strong> Validate migration success against objectives, perform final testing and documentation updates, address mentor feedback, submit final deliverables.</li>
+        <li><strong>Tasks:</strong>
+            <ul class="sub-list">
+                <li>Conduct thorough end-to-end integration tests.</li>
+                <li>Perform final load testing to confirm performance targets.</li>
+                <li>Complete all documentation (code comments, README, API docs, migration guide).</li>
+                <li>Ensure FastAPI's OpenAPI documentation is accurate and reflects all endpoints/schemas.</li>
+                <li>Address any remaining bugs or issues identified during testing/mentor reviews.</li>
+                <li>Prepare final code submission according to GSoC guidelines.</li>
+                <li>Gather final mentor feedback and incorporate necessary refinements.</li>
+            </ul>
+        </li>
+        <li><strong>Challenges:</strong> Ensuring all edge cases are tested, completing final documentation thoroughly, managing time for final refinements.</li>
+    </ul>
+
+    <hr>
+
+    <br><br>
+    </ul>
+    <h3 style="margin-top: 30px;padding-top: 30px;"><strong>Project Timeline Overview Table</strong></h3>
+    <table>
+    <thead>
+    <tr>
+    <th style="text-align: left;"><strong>Phase</strong></th>
+    <th style="text-align: left;"><strong>Tasks</strong></th>
+    <th style="text-align: left;"><strong>Timeline</strong></th>
+    <th style="text-align: left;"><strong>Estimated Hours</strong></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td style="text-align: left;"><strong>Phase 1: Core Setup</strong></td>
+    <td style="text-align: left;">\- Develop FastAPI skeleton- Configure Docker/Docker Compose- Implement basic healthcheck/logging/error handling- Setup <code>asyncpg</code> connection pool- Initial DB init script</td>
+    <td style="text-align: left;">June 2 To June 15, 2025</td>
+    <td style="text-align: left;">25h</td>
+    </tr>
+    <tr>
+    <td style="text-align: left;"><strong>Phase 2: Database Scripting &amp; Schema Conversion</strong></td>
+    <td style="text-align: left;">\- Convert Django models to an SQL schema- Develop, test, and version-control robust Bash scripts for database management (init, migrate w/ state &amp; dry-run, backup, seed)- Implement data validation using Pydantic models</td>
+    <td style="text-align: left;">June 16 To July 5, 2025</td>
+    <td style="text-align: left;">40h</td>
+    </tr>
+    <tr>
+    <td style="text-align: left;"><strong>Phase 3: API Migration</strong></td>
+    <td style="text-align: left;">\- Refactor all API endpoints from Django to FastAPI- Implement asynchronous request handling (<code>asyncpg</code>)- Implement comprehensive request/response validation (Pydantic)- Ensure API compatibility</td>
+    <td style="text-align: left;">July 6 To July 25, 2025</td>
+    <td style="text-align: left;">45h</td>
+    </tr>
+    <tr>
+    <td style="text-align: left;"><strong>Phase 4: Authentication &amp; Security</strong></td>
+    <td style="text-align: left;">\- Implement JWT-based authentication- Integrate permissions logic- Implement security best practices (headers, input validation)- Basic rate limiting (if feasible)</td>
+    <td style="text-align: left;">July 26 To August 5, 2025</td>
+    <td style="text-align: left;">30h</td>
+    </tr>
+    <tr>
+    <td style="text-align: left;"><strong>Phase 5: Optimization &amp; Deployment Prep</strong></td>
+    <td style="text-align: left;">\- Implement Redis caching for key API endpoints- Conduct basic load testing and performance benchmarking- Finalize Docker Compose setup- Finalize and update documentation (README, API docs, <code>DATABASE.md</code>)</td>
+    <td style="text-align: left;">August 6 To August 15, 2025</td>
+    <td style="text-align: left;">35h</td>
+    </tr>
+    <tr>
+    <td style="text-align: left;"><strong>Final Evaluation &amp; Wrap-up</strong></td>
+    <td style="text-align: left;">\- Final Testing, Documentation Polish, Address Feedback, Code Submission</td>
+    <td style="text-align: left;">August 16 To August 25, 2025</td>
+    <td style="text-align: left;"><em>(Buffer/Testing)</em></td>
+    </tr>
+    <tr>
+    <td style="text-align: left;"><strong>Total Estimated Hours</strong></td>
+    <td style="text-align: left;"></td>
+    <td style="text-align: left;"></td>
+    <td style="text-align: left;"><strong>175h</strong></td>
+    </tr>
+    </tbody>
+    </table>
+    <hr />
+    <br>
+    <br>
+    <br>
+    <br>
+    <br><br>
+    
+    <h2 id="viii-unit-testing-strategy"><strong>VIII. Unit Testing Strategy</strong></h2>
+    <p>A robust testing framework is crucial for the success of this migration. The testing strategy will include:</p>
+    <ul>
+    <li><strong>Framework:</strong> Utilize <code>pytest</code> along with <code>pytest-asyncio</code> to support asynchronous testing.</li>
+    <li><strong>API Testing:</strong> Employ tools like <code>httpx</code> within <code>pytest</code> to make requests to the FastAPI test client, validating routes, request/response formats, status codes, and adherence to the OpenAPI schema.</li>
+    <li><strong>Database Testing:</strong> Ensure data integrity post-migration by comparing outcomes with baseline results. Test database interaction logic, potentially using test databases or transaction rollbacks. Test the functionality of the Bash DB management scripts (e.g., does init create the schema? does migrate apply changes correctly?).</li>
+    <li><strong>Performance Testing:</strong> Conduct load tests using tools like <code>locust</code> or <code>k6</code> to confirm that the new endpoints meet performance targets (e.g., 95% response times under <strong>200ms</strong> under expected load).</li>
+    <li><strong>Security Testing:</strong> Validate the effectiveness of JWT authentication (token validation, expiry, protected routes) and other security measures like input validation.</li>
+    </ul>
+    <p>Each test case will be thoroughly documented. Fixtures (<code>pytest</code> fixtures) will be used extensively to set up necessary environments (like database connections, test data) and ensure test reproducibility.</p>
+    <h2 id="ix-my-progress-and-research"><strong>IX. My Progress and Research</strong></h2>
+    <p>To ensure I could create a detailed and viable proposal, I have dedicated significant time over the past few weeks to researching the project requirements and the existing IHR codebase.</p>
+    <p>My preparation involved:</p>
+    <ol>
+    <li><strong>Exploring the Existing Codebase:</strong> I have forked the <code>ihr-django</code> repository to my personal GitHub account: <a href="https://github.com/Shashwat-Darshan/ihr-django">My fork</a>. Within this fork, I have been actively exploring the current Django 2.2 application, focusing on understanding the structure of the models (<code>models.py</code>), the logic within the views (<code>views.py</code>), the existing database interaction patterns, authentication mechanisms, and identifying key dependencies. This hands-on exploration has helped me grasp the complexities involved in the migration.</li>
+    <li><strong>Researching Target Technologies:</strong> I have refreshed my knowledge and researched best practices for FastAPI, particularly concerning asynchronous operations with <code>asyncpg</code> for PostgreSQL interaction, structuring larger FastAPI applications, and implementing JWT authentication securely using <code>python-jose</code> and <code>passlib</code>.</li>
+    <li><strong>Investigating the Database Scripting Approach:</strong> Given the requirement to use Bash scripts for database management, I researched techniques for writing robust and maintainable shell scripts for tasks like schema initialization, migration application (including state tracking and error handling, similar to concepts in tools like Alembic or Flyway, but implemented in Bash), and backups using tools like <code>psql</code> and <code>pg_dump</code>.</li>
+    <li><strong>Dockerization:</strong> I reviewed best practices for containerizing FastAPI applications using Docker and Docker Compose, including multi-stage builds and handling environment variables.</li>
+    </ol>
+    <p>This preliminary research and hands-on exploration of the codebase have directly informed the detailed migration strategy, timeline, and deliverables outlined in this proposal, giving me confidence in the feasibility of the plan.</p>
+    <p>I am committed to delivering a high-quality and well-documented proposal that aligns with the project requirements and my understanding of the existing codebase.</p>
+    <h2 id="x-expectations-from-mentor"><strong>X. Expectations from Mentor</strong></h2>
+    <p>I am always looking to learn and improve upon my mistakes. I would like my mentors to provide constructive feedback, so we can work together to make my project better. This gives me the opportunity to collaborate with them and learn from their experiences as professionals in this field. I am particularly interested in discussing the practicalities and potential trade-offs of the Bash-based database management approach. I would also love to understand their motivations for working with the IHR and learn about their career journeys.</p>
+    <h2 id="xi-other-commitments"><strong>XI. Other Commitments</strong></h2>
+    <p>During the GSoC period, my primary focus will be on this project. I do not have any full-time commitments that would interfere with my ability to complete the expected deliverables. However, I may occasionally work on personal development projects or engage in my college studies, especially during exam periods. I will ensure transparent communication regarding my availability.</p>
+    <h2 id="xii-future-plans-after-gsoc"><strong>XII. Future Plans After GSoC</strong></h2>
+    <p>After the GSoC period is over, I plan to continue contributing to the IHR project by maintaining and improving the backend infrastructure, potentially working on items identified in the \"Future Work\" section like implementing CI/CD pipelines or enhanced monitoring. I am also interested in exploring opportunities in backend system architecture, distributed computing, and cloud-native development. Additionally, I would love to mentor future GSoC participants and help them navigate the program, sharing my firsthand experience of the challenges and learning opportunities it offers.</p>
